@@ -11,5 +11,10 @@ export const routes: Routes = [
       loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent),
       canActivate: [AuthGuard]
     },
+    { 
+      path: 'student', 
+      loadComponent: () => import('./student/student.component').then(m => m.StudentComponent),
+      canActivate: [AuthGuard]
+    },
     { path: '**', redirectTo: '/login' },
   ];

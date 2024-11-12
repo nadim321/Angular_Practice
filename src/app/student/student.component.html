@@ -1,0 +1,46 @@
+<div class="container">
+    <h2>Student CRUD Operations</h2>
+  
+    <!-- Student Form -->
+    <form (ngSubmit)="saveStudent()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" class="form-control" [(ngModel)]="studentForm.name" name="name" required />
+      </div>
+      <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" id="age" class="form-control" [(ngModel)]="studentForm.age" name="age" required />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" class="form-control" [(ngModel)]="studentForm.email" name="email" required />
+      </div>
+      <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Add' }} Student</button>
+      <button type="button" class="btn btn-secondary" (click)="resetForm()">Cancel</button>
+    </form>
+  
+    <!-- Student List -->
+    <h3 class="mt-4">Student List</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.name }}</td>
+          <td>{{ student.age }}</td>
+          <td>{{ student.email }}</td>
+          <td>
+            <button class="btn btn-warning" (click)="editStudent(student)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteStudent(student.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
